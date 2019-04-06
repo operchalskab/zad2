@@ -6,6 +6,15 @@ public class Samochod {
     private String rocznik;
     private double cena;
     private double przebieg;
+    private boolean visible;
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public String getMarka() {
         return marka;

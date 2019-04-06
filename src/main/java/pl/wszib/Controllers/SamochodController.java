@@ -3,6 +3,7 @@ package pl.wszib.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.wszib.Domains.Samochod;
 
 
@@ -12,6 +13,11 @@ import java.util.List;
 @Controller
 public class SamochodController {
 
+    private List<Samochod> listSamochod;
+
+    public SamochodController() {
+        listSamochod = generateList();
+    }
 
     @GetMapping("iteration")
     public String iteration(Model model) {
@@ -20,48 +26,68 @@ public class SamochodController {
         return "iterationTemplate";
     }
 
+    @GetMapping("forms")
+    public String forms(Model model){
+
+        model.addAttribute("samochod", new Samochod());
+        return "formsTemplate";
+    }
+
+    @PostMapping("formsSave")
+    public String formsSave(Samochod samochod, Model model){
+        listSamochod.add(samochod);
+
+        return "successTemplate";
+
+    }
+
     private List<Samochod> generateList() {
         List<Samochod> list = new ArrayList<>();
 
-        Samochod car1 = new Samochod();
-        car1.setModel("Opel");
-        car1.setMarka("cos");
-        car1.setRocznik("1987");
-        car1.setCena(40440.00);
-        car1.setPrzebieg(1212121);
-        list.add(car1);
+        Samochod samochod1 = new Samochod();
+        samochod1.setModel("Opel");
+        samochod1.setMarka("cos");
+        samochod1.setRocznik("1987");
+        samochod1.setCena(40440.00);
+        samochod1.setPrzebieg(1212121);
+        samochod1.setVisible(true);
+        list.add(samochod1);
 
-        Samochod car2 = new Samochod();
-        car2.setModel("da");
-        car2.setMarka("cosd1");
-        car2.setRocznik("1917");
-        car2.setCena(4040.00);
-        car2.setPrzebieg(122121);
-        list.add(car2);
+        Samochod samochod2 = new Samochod();
+        samochod2.setModel("da");
+        samochod2.setMarka("cosd1");
+        samochod2.setRocznik("1917");
+        samochod2.setCena(4040.00);
+        samochod2.setPrzebieg(122121);
+        samochod2.setVisible(true);
+        list.add(samochod2);
 
-        Samochod car3 = new Samochod();
-        car3.setModel("BMWd");
-        car3.setMarka("cos1d");
-        car3.setRocznik("1917");
-        car3.setCena(440.00);
-        car3.setPrzebieg(121421);
-        list.add(car3);
+        Samochod samochod3 = new Samochod();
+        samochod3.setModel("BMWd");
+        samochod3.setMarka("cos1d");
+        samochod3.setRocznik("1917");
+        samochod3.setCena(440.00);
+        samochod3.setPrzebieg(121421);
+        samochod3.setVisible(true);
+        list.add(samochod3);
 
-        Samochod car4 = new Samochod();
-        car4.setModel("BMW");
-        car4.setMarka("cos1");
-        car4.setRocznik("1917");
-        car4.setCena(40440.00);
-        car4.setPrzebieg(1212121);
-        list.add(car4);
+        Samochod samochod4 = new Samochod();
+        samochod4.setModel("BMW");
+        samochod4.setMarka("cos1");
+        samochod4.setRocznik("1917");
+        samochod4.setCena(40440.00);
+        samochod4.setPrzebieg(1212121);
+        samochod4.setVisible(true);
+        list.add(samochod4);
 
-        Samochod car5 = new Samochod();
-        car5.setModel("BMW");
-        car5.setMarka("cos1");
-        car5.setRocznik("1917");
-        car5.setCena(40440.00);
-        car5.setPrzebieg(1212121);
-        list.add(car5);
+        Samochod samochod6 = new Samochod();
+        samochod6.setModel("BMW");
+        samochod6.setMarka("cos1");
+        samochod6.setRocznik("1917");
+        samochod6.setCena(40440.00);
+        samochod6.setPrzebieg(1212121);
+        samochod6.setVisible(true);
+        list.add(samochod6);
 
         return list;
 
